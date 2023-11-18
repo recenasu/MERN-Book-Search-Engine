@@ -9,7 +9,8 @@ const resolvers = {
     },
 
     Mutation: {
-        createUser: async (parent, { username, email, password }) => {
+        createUser: async (parent, { input }) => {
+            const { username, email, password } = input;
             const user = await User.create({ username, email, password });
             const token = signToken(user);
             return { token, user };
@@ -31,11 +32,12 @@ const resolvers = {
 
             return { token, user };
         },
-        saveBook: async (parent, { userID, description, bookID, image, link, title }) => {
+        saveBook: async (parent, { input }) => {
+            const { userID, authors, description, bookId, image, link, title } = input;
             return User.findOneAndUpdate(
                 { _id: userID },
                 {
-                    $addToSet: { books: { description, bookID, image, link, title }}
+                    $addToSet: { savedBooks: { authors, description, bookId, image, link, title }}
                 },
                 {
                     new: true,

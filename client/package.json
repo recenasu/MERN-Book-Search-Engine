@@ -14,7 +14,8 @@
     "react-dom": "^16.13.1",
     "react-router-dom": "^6.2.1",
     "react-scripts": "^5.0.1",
-    "@apollo/client": "^3.7.16"
+    "@apollo/client": "^3.7.14",
+    "graphql": "^16.6.0"
   },
   "scripts": {
     "start": "react-scripts start",
